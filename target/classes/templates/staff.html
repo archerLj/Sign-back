@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/staff.css" rel="stylesheet">
+    <link href="../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body ng-app="staff-app">
+    <div class="container" ng-controller="staff-ctrl">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li ng-repeat="item in departments"><a href="#{{item.departmentId}}" data-toggle="tab" ng-click="departmentChange($index)">{{item.departmentName}}</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div ng-repeat="item in departments" class="tab-pane" id="{{item.departmentId}}">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>名字</th>
+                            <th>工号</th>
+                            <th>Tel.</th>
+                            <th>职位</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in staffs">
+                            <td>{{$index}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.jobNum}}</td>
+                            <td>{{item.phoneNum}}</td>
+                            <td>{{item.position}}</td>
+                            <td><button class="btn btn-danger btn-sm" type="button" ng-click="deleteStaff($index)">删除</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+        <nav>
+            <ul class="pager">
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 前一页</a></li>
+                <li class="next"><a href="#">后一页 <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="../js/angularjs/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/angularjs/angular.min.js"></script>
+    <script src="../js/staff.js"></script>
+</body>
+
+</html>

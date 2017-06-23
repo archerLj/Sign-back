@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archer.dao.EventDao">
+    <insert id="addEvent" useGeneratedKeys="true">
+        insert into lf_event(userid,actionType,latitude,longtitude,address,comment,remark)
+        VALUES (#{userid},#{actionType},#{latitude},#{longtitude},#{address},#{comment},#{remark})
+    </insert>
+
+    <select id="getTodayEvent" resultType="Event">
+        SELECT *
+        FROM  lf_event
+        where userid = #{userid} and updateTime BETWEEN #{startDate} AND #{endDate}
+    </select>
+
+    <select id="getAllEvents" resultType="Event">
+        SELECT *
+        FROM lf_event
+        WHERE updateTime > #{startDate}
+    </select>
+</mapper>

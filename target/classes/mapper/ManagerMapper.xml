@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archer.dao.SettingDao">
+    <select id="getSetting" resultType="Setting">
+        SELECT *
+        FROM lf_setting
+    </select>
+
+    <update id="updateSetting">
+        UPDATE lf_setting
+        SET workTime = #{workTime},
+            offWorkTime = #{offWorkTime},
+            checkDay = #{checkDay}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="addSetting" useGeneratedKeys="true">
+        INSERT INTO lf_setting (workTime, offWorkTime, checkDay)
+        VALUES (#{workTime}, #{offWorkTime}, #{checkDay})
+    </insert>
+</mapper>

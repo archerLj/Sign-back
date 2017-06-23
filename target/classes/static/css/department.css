@@ -1,0 +1,32 @@
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.commit-btn {
+    width: 150px;
+    height: 30px;
+}
+
+.add-btn {
+    border: none;
+}
+
+.glyphicon-plus {
+    color: green;
+}
+
+.glyphicon-minus {
+    color: red;
+}
+
+.departmentTable {
+    width: 300px;
+    flex-grow: 0;
+}
+
+.tbDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,33 @@
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="../css/login.css" rel="stylesheet" />
+        <link href="../js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../js/jQuery-mloading/jquery.mloading.css" rel="stylesheet" />
+        <title>登录</title>
+    </head>
+    <body ng-app="myApp">
+        <div class="main" ng-controller="myCtrl">
+            <div class="login-pannel">
+                <form class="form" name="myForm">
+                    <div class="form-group">
+                        <label class="control-label" for="username">用户名:</label>
+                        <input type="text" required="required" class="form-control" placeholder="请输入用户名" id="username" ng-model="username" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">密码:</label>
+                        <input type="password" required="required" class="form-control" placeholder="请输入密码" id="password" ng-model="password" />
+                    </div>
+                    <button class="btn btn-default" ng-click="login()" type="button" id="loginBtn">登录</button>
+                    <button class="btn btn-default pull-right" ng-click="signIn()" type="button">注册</button>
+                </form>
+            </div>
+        </div>
+        <script src="../js/angularjs/angular.min.js"></script>
+        <script src="../js/angularjs/jquery-3.1.1.min.js"></script>
+        <script src="../js/jQuery-mloading/jquery.mloading.js"></script>
+        <script src="../js/md5/md5.js"></script>
+        <script src="../js/login.js"></script>
+    </body>
+</html>

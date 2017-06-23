@@ -1,0 +1,84 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/otherSetting.css" rel="stylesheet">
+    <link href="../js/jQuery-mloading/jquery.mloading.css" rel="stylesheet" />
+</head>
+<body ng-app="otherSettingApp">
+
+<div class="container" ng-controller="myCtrl">
+    <div class="row">
+        <div class="col-md-6">
+            <label>上班时间: </label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="signInTimeMenu" data-toggle="dropdown">
+                    {{signInPlaceholder}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="time in signInArr"><a href="#" ng-click="singInTimeClick()">{{time}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="control-label">下班时间: </label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="signOUTTimeMenu" data-toggle="dropdown">
+                    {{signOutPlaceholder}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="time in signOutArr"><a href="#" ng-click="singOutTimeClick()">{{time}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row row2">
+        <div class="col-md-12">
+            <label class="control-label">每月考核日期: </label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="checkDayMenu" data-toggle="dropdown">
+                    {{checkDayPlaceholder}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="time in checkDayArr"><a href="#" ng-click="checkDayClick()">{{time}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center btn-div">
+        <button class="btn btn-danger" type="button" ng-click="updateSetting()">修改</button>
+    </div>
+
+
+
+    <!--警告框-->
+    <div class="modal fade" tabindex="-1" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">提示信息</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{infoMessage}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<script src="../js/angularjs/jquery-3.1.1.min.js"></script>
+<script src="../js/angularjs/angular.min.js"></script>
+<script src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/jQuery-mloading/jquery.mloading.js"></script>
+<script src="../js/otherSetting.js"></script>
+</body>
+</html>

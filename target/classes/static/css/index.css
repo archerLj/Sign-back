@@ -1,0 +1,22 @@
+.brand {
+    color: red;
+}
+
+.container-fluid {
+    background-color: #222222;
+    height: 50px;
+}
+
+.navbar-collapse {
+    background-color: #222222;
+}
+
+.navbar-inverse {
+    border: none;
+}
+
+.main-iFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

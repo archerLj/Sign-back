@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.archer.dao.UserDao">
+    <select id="getUserInfoByOpenid" resultMap="userMap">
+        select
+        U.id as u_id,
+        U.openid as u_openid,
+        U.name as u_name,
+        U.jobNum as u_jobNum,
+        U.phoneNum as u_phoneNum,
+        U.position as u_position,
+        U.pswd as u_pswd,
+        D.id as d_id,
+        D.name as d_name
+        from lf_user U
+        left outer join lf_department D on U.departmentid = D.id
+        where U.openid = #{openid}
+    </select>
+
+    <resultMap id="userMap" type="User">
+        <id property="id" column="u_id"/>
+        <result property="openid" column="u_openid"/>
+        <result property="name" column="u_name"/>
+        <result property="jobNum" column="u_jobNum"/>
+        <result property="phoneNum" column="u_phoneNum"/>
+        <result property="position" column="u_position"/>
+        <result property="pswd" column="u_pswd"/>
+
+        <!-- 指定某些实体类属性对应的类型 -->
+        <association property="department" javaType="Department">
+            <id property="id" column="d_id"/>
+            <result property="name" column="d_name"/>
+        </association>
+    </resultMap>
+
+    <insert id="addUser" useGeneratedKeys="true">
+        INSERT INTO lf_user(openid,name,jobNum,departmentid,phoneNum,position,pswd)
+        SELECT #{openid}, #{name}, #{jobNum},id, #{phoneNum}, #{position},#{pswd} FROM lf_department where name = #{department}
+    </insert>
+    
+    <select id="getUserByAccount" resultMap="userMap">
+                select
+        U.id as u_id,
+        U.openid as u_openid,
+        U.name as u_name,
+        U.jobNum as u_jobNum,
+        U.phoneNum as u_phoneNum,
+        U.position as u_position,
+        U.pswd as u_pswd,
+        D.id as d_id,
+        D.name as d_name
+        from lf_user U
+        left outer join lf_department D on U.departmentid = D.id
+        where U.phoneNum = #{account}
+    </select>
+    
+    <update id="changePaswd">
+        UPDATE lf_user
+        SET pswd = #{pswd}
+        WHERE phoneNum = #{phoneNum}
+    </update>
+</mapper>
